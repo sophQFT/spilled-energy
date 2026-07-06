@@ -11,3 +11,5 @@ wheels/
 
 *.lock
 .env
+# Local experiment logs
+logs/
