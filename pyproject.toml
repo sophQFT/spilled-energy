@@ -25,3 +25,15 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+# --- Reproduction note (added by sophQFT) ---
+# Original uv.lock resolved torch to a CUDA 13 build (torch 2.12.1+cu130),
+# which does not run on our driver (570.x / CUDA 12.8).
+# Pin torch to PyTorch's CUDA 12.8 wheel index instead.
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128" }]
